@@ -8,4 +8,40 @@ class Vehicle {
   honk() {
     return "Beep🚘";
   }
+  toString() {
+    return `The vehicle is a ${this.make} ${this.model} from ${this.year}. `;
+  }
+}
+
+class Car extends Vehicle {
+  constructor(make, model, year) {
+    super(make, model, year);
+    this.wheels = 4;
+  }
+}
+
+class Motorcycle extends Vehicle {
+  constructor(make, model, year) {
+    super(make, model, year);
+    this.wheels = 2;
+  }
+  revEngine() {
+    return "VROOOMMMM!!!🏍💨";
+  }
+}
+class Garage {
+  constructor(capacity) {
+    this.vehicles = [];
+    this.capacity = capacity;
+  }
+  add(newVehicle) {
+    if (!(newVehicle instanceof Vehicle)) {
+      return "Only vehicles are allowed in here!";
+    }
+    if (this.vehicles.length >= this.capacity) {
+      return "Sorry the garage is full";
+    }
+    this.vehicles.push(newVehicle);
+    return "Vehicle added!";
+  }
 }
